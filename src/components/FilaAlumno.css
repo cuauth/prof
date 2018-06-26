@@ -1,0 +1,10 @@
+.filaAlumno {
+    grid-column: 1 / end;
+}
+.bNombre{
+    grid-column: 1 0;
+    grid-row: 2 1fr;
+}
+.bodyDias{
+    text-align: center;
+}
