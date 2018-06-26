@@ -1,3 +1,4 @@
+import { connect } from 'react-redux'
 import React from "react";
 import style from './ListaAlumnos.css'
 import FilaAlumno from './FilaAlumno'
@@ -5,7 +6,7 @@ import moment from 'moment';
 import 'moment/locale/es'  // without this line it didn't work
 moment.locale('es')
 
-export default class ListaAlumnos extends React.Component {
+class ListaAlumnos extends React.Component {
   constructor(props){
     super(props)
     this.numeroDeDias = 0 ;
@@ -14,12 +15,12 @@ export default class ListaAlumnos extends React.Component {
 
   renderHeader(){
     let diaEnUso =  moment(this.props.listaFechas.inicio)
-    let nuevaSemana = true;
+    let nuevaSemana = true
     let semanas = [];
-    let semanaCount = 0 ;
+    let semanaCount = 0 
     let dias = [];
     let diaCount = 0
-    
+    this.numeroDeDias = 0
     
     while(moment(diaEnUso).isSameOrBefore(this.props.listaFechas.fin, 'day') ){
       let weekday = moment(diaEnUso).weekday()
@@ -56,13 +57,10 @@ export default class ListaAlumnos extends React.Component {
 
   render( ){
     const header = this.renderHeader(); // esta linea tiene que estar aqui, numero de dias 
-    const paddingAlumnos = this.props.alumnos.length
+    const paddingAlumnos = this.props.alumnos.byId.length
     const _numeroDeDias = this.numeroDeDias
-    let filaAlumno = this.props.alumnos.map(function(item, index){
-      item.countPadding = paddingAlumnos
-      item.index = index+1
-      item.numeroDeDias = _numeroDeDias
-      return <FilaAlumno { ...item } key={index}  />
+    const filaAlumno = this.props.alumnos.byId.map((item, index) => {
+      return <FilaAlumno index={index} countPadding={paddingAlumnos} numeroDeDias={_numeroDeDias} alumno={this.props.alumnos.byHash[item] } key={index}  />
     })
     return <table className={style.listaAlumnosGrid}>
       {header}
@@ -70,3 +68,20 @@ export default class ListaAlumnos extends React.Component {
       </table>
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    listaFechas: state.listaFechas,
+    alumnos: state.listaAlumnos
+
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListaAlumnos)
