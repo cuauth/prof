@@ -10,30 +10,19 @@ export const grupos = {
 
 }
 
-export const agregarFechas = (fechaInicio,fechaFin) => {
+
+export const agregarGrupo = (grupoId,alumnos,fechas) => {
   return {
-    type: grupos.AGREGAR_FECHA_INICIO,
-    fechas: {
-      inicio: fechaInicio,
-      fin: fechaFin
+    type: grupos.AGREGAR_GRUPO,
+    payload: {
+      id: grupoId,
+      alumnos: alumnos,
+      fechas: {
+        inicio: fechas.inicio,
+        fin: fechas.fin
+      }
     }
-    
   }
+
 }
 
-export const agregarAlumno = (alumno) => {
-  return {
-    type: grupos.AGREGAR_ALUMNO,
-    id: alumno.id,
-    payload: {
-      nombre: alumno.nombre,
-      asistencias: alumno.asistencias
-    }
-  }
-}
-export const agregarAlumnos = (alumnos) => {
-  return {
-    type: grupos.AGREGAR_ALUMNOS,
-    alumnos: alumnos
-  }
-}

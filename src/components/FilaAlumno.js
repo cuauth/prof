@@ -22,7 +22,7 @@ export default class FilaAlumno extends React.Component {
       }
       dias.push(
         <td key={i} className={style.bodyDias}>
-          <AsistenciaInput checked={asistio} indexAlumno={this.props.alumno.id} index={i} tabIndex={i * this.props.countPadding + this.props.index+1} />
+          <AsistenciaInput  grupoId={this.props.grupoId} checked={asistio} indexAlumno={this.props.alumno.id} index={i} tabIndex={i * this.props.countPadding + this.props.index+1} />
         </td>)
     }
     dias.push(<td key={'final'}>

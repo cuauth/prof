@@ -62,7 +62,7 @@ class ListaAlumnos extends React.Component {
     const _numeroDeDias = this.numeroDeDias
     const filaAlumno = Object.keys(this.props.alumnos.data).map((key, index) => {
       
-      return <FilaAlumno index={index} countPadding={paddingAlumnos} numeroDeDias={_numeroDeDias} alumno={this.props.alumnos.data[key] } key={key}  />
+      return <FilaAlumno grupoId={this.props.grupoId} index={index} countPadding={paddingAlumnos} numeroDeDias={_numeroDeDias} alumno={this.props.alumnos.data[key] } key={key}  />
     })
     return <table className={style.listaAlumnosGrid}>
       {header}
@@ -71,13 +71,12 @@ class ListaAlumnos extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  
+const mapStateToProps = (state,props) => {
   return {
-    listaFechas: state.grupos[1].fechas,
+    listaFechas: state.grupos[props.grupoId].fechas,
     alumnos: {
-      data: state.grupos[1].alumnos,
-      length: Object.keys(state.grupos[1].alumnos).length
+      data: state.grupos[props.grupoId].alumnos,
+      length: Object.keys(state.grupos[props.grupoId].alumnos).length
     }
     
 

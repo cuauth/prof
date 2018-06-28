@@ -34,8 +34,7 @@ const listaAlumnos = (state = initialState, action) => {
       return state
     case grupos.AGREGAR_GRUPO:
     case grupos.AGREGAR_ALUMNOS:
-      let newArr = Object.assign({}, state);
-      console.log(newArr)
+      let newArr = Object.assign({}, state)
       action.payload.alumnos.map( (item, index) => {
         const nuevoAlumno = alumnos(item,action)
         newArr[nuevoAlumno.id] = nuevoAlumno
