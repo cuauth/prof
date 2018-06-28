@@ -78,8 +78,6 @@ const mapStateToProps = (state,props) => {
       data: state.grupos[props.grupoId].alumnos,
       length: Object.keys(state.grupos[props.grupoId].alumnos).length
     }
-    
-
   }
 }
 const mapDispatchToProps = dispatch => {
