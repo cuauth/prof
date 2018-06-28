@@ -31,9 +31,18 @@ const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
-store.dispatch(agregarFechas(inicio,moment(inicio).add(15, 'days')))
-store.dispatch(agregarAlumnos(alumnos))
-//store.dispatch(agregarAlumno(alumnos[0]))
+
+store.dispatch({
+  type: 'AGREGAR_GRUPO',
+  payload: {
+    id: 1,
+    alumnos: alumnos,
+    fechas: {
+      inicio: inicio,
+      fin: moment(inicio).add(15, 'days')
+    }
+  }
+})
 const Index = () => {
   return <Provider store={store}>
       <ListaAumnos/>

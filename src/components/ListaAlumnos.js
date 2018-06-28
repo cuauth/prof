@@ -14,6 +14,7 @@ class ListaAlumnos extends React.Component {
   }
 
   renderHeader(){
+    if(!this.props.listaFechas) return null;
     let diaEnUso =  moment(this.props.listaFechas.inicio)
     let nuevaSemana = true
     let semanas = [];
@@ -57,10 +58,11 @@ class ListaAlumnos extends React.Component {
 
   render( ){
     const header = this.renderHeader(); // esta linea tiene que estar aqui, numero de dias 
-    const paddingAlumnos = this.props.alumnos.byId.length
+    const paddingAlumnos = this.props.alumnos.length
     const _numeroDeDias = this.numeroDeDias
-    const filaAlumno = this.props.alumnos.byId.map((item, index) => {
-      return <FilaAlumno index={index} countPadding={paddingAlumnos} numeroDeDias={_numeroDeDias} alumno={this.props.alumnos.byHash[item] } key={index}  />
+    const filaAlumno = Object.keys(this.props.alumnos.data).map((key, index) => {
+      
+      return <FilaAlumno index={index} countPadding={paddingAlumnos} numeroDeDias={_numeroDeDias} alumno={this.props.alumnos.data[key] } key={key}  />
     })
     return <table className={style.listaAlumnosGrid}>
       {header}
@@ -70,9 +72,14 @@ class ListaAlumnos extends React.Component {
 }
 
 const mapStateToProps = state => {
+  
   return {
-    listaFechas: state.listaFechas,
-    alumnos: state.listaAlumnos
+    listaFechas: state.grupos[1].fechas,
+    alumnos: {
+      data: state.grupos[1].alumnos,
+      length: Object.keys(state.grupos[1].alumnos).length
+    }
+    
 
   }
 }

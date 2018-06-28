@@ -1,7 +1,6 @@
 import { grupos } from '../actions'
 const initialState = {
-  byId: [],
-  byHash: {}
+
 }
 
 
@@ -19,7 +18,7 @@ const alumnos = (state= initialState, action) => {
     case grupos.CAMBIAR_ALUMNO_ASISTENCIA: {
 
       let newArr = Object.assign({}, state);
-      newArr.asistencias[action.index] = action.newValue
+      newArr.asistencias[action.payload.indiceDia] = action.payload.nuevoValor
       return newArr
     }
     default: 
@@ -29,20 +28,23 @@ const alumnos = (state= initialState, action) => {
 }
 
 const listaAlumnos = (state = initialState, action) => {
+  
   switch (action.type) {
     case grupos.AGREGAR_ALUMNO:
       return state
+    case grupos.AGREGAR_GRUPO:
     case grupos.AGREGAR_ALUMNOS:
       let newArr = Object.assign({}, state);
-      newArr.byId = newArr.byId.concat(action.alumnos.map( (item, index) => {
-        const nuevo_alumno = alumnos(item,action)
-        newArr.byHash[nuevo_alumno.id] = nuevo_alumno
-        return nuevo_alumno.id
-      }))
+      console.log(newArr)
+      action.payload.alumnos.map( (item, index) => {
+        const nuevoAlumno = alumnos(item,action)
+        newArr[nuevoAlumno.id] = nuevoAlumno
+      })
       return newArr
     case grupos.CAMBIAR_ALUMNO_ASISTENCIA: {
       let newArr = Object.assign({}, state);
-      newArr.byHash[action.indexAlumno] = alumnos(newArr.byHash[action.indexAlumno],action)
+
+      newArr[action.payload.alumnoId] = alumnos(newArr[action.payload.alumnoId],action)
       return newArr
       
     }

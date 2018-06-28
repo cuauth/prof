@@ -19,18 +19,21 @@ class AsistenciaInput extends React.Component {
 
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    changeAsistencia: (indexAlumno, index, newValue) =>{
+    changeAsistencia: (alumnoId, indiceDia, valor) =>{
       dispatch({
         type: 'CAMBIAR_ALUMNO_ASISTENCIA',
-        indexAlumno: indexAlumno,
-        index: index,
-        newValue: newValue
+        payload: {
+          grupoId: 1,
+          alumnoId: alumnoId,
+          indiceDia: indiceDia,
+          nuevoValor: valor
+        }
       })
     }
   }
