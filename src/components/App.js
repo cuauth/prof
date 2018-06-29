@@ -5,10 +5,9 @@ import ListaGrupos from './ListaGrupos'
 import Header from  './Header'
 import SettingsCog from './SettingsCog'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog , faChevronLeft  } from '@fortawesome/free-solid-svg-icons'
+import { faCog , faChevronLeft, faHome  } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCog,faChevronLeft)
+library.add(faCog,faChevronLeft, faHome)
 
 class App extends React.Component {
 
