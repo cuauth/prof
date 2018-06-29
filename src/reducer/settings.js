@@ -10,7 +10,7 @@ const settingsReducer = (state = settingsInitial, action) => {
     case 'MOSTRAR_GRUPO': {
       return {
         ...state,
-        mostrarGrupo : action.payload.grupoId
+        mostrarGrupo : action.payload.id
       } 
     }
     default:
