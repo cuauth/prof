@@ -12,8 +12,14 @@ const initialAlumno = {
 }
 const alumnos = (state= initialState, action) => {
   switch (action.type) {
-    case grupos.AGREGAR_ALUMNOS: {
-      return state
+    case grupos.AGREGAR_ALUMNO: {
+      const newAlumno = {
+        id: action.payload.alumno.id,
+        nombre: action.payload.alumno.nombre,
+        asistencias: []
+      }
+      console.log(newAlumno)
+      return newAlumno
     }
     case grupos.CAMBIAR_ALUMNO_ASISTENCIA: {
 
@@ -31,7 +37,15 @@ const listaAlumnos = (state = initialState, action) => {
   
   switch (action.type) {
     case grupos.AGREGAR_ALUMNO:
-      return state
+      const test1 = {
+        ...state,
+        alumnos: {
+          ...state.alumnos,
+          [action.payload.alumno.id]: alumnos(undefined,action)
+        }
+      }
+      console.log(test1)
+      return test1
     case grupos.AGREGAR_GRUPO:
     case grupos.AGREGAR_ALUMNOS:
       let newArr = Object.assign({}, state)

@@ -1,3 +1,4 @@
+
 .headerContainer{
   background-color: steelblue;
   color: azure;
@@ -5,6 +6,8 @@
   margin: 0px;
 }
 .homeIcon{
+  color: azure;
+  display: inline;
 }
 .headerName{
   padding-left: 3px;

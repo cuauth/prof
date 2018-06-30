@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
 import listaFechas from './listaFechas'
 import listaAlumnos from './listaAlumnos'
 
@@ -11,6 +10,12 @@ struct of grupos
 */
 const gruposReducer = (state = {}, action) => {
   switch (action.type) {
+    case 'AGREGAR_ALUMNO': {
+      return {
+        ...state,
+        [action.payload.grupoId]: listaAlumnos(state[action.payload.grupoId],action)
+      }
+    }
     case 'AGREGAR_GRUPO': {
       return {
         ...state,

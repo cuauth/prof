@@ -1,27 +1,22 @@
 import React from "react"
 import { connect } from 'react-redux'
-import ListaAlumnos from './ListaAlumnos'
 import { mostrarGrupo } from '../actions'
-import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom'
+import style from './ListaGrupos.css'
 class ListaGrupos extends React.Component {
   constructor(props) {
     super(props)
     this.renderGrupos = this.renderGrupos.bind(this)
-    this.handleClickGrupo = this.handleClickGrupo.bind(this)
   }
 
-  handleClickGrupo (grupoId) {
-    console.log('handling')
-    this.props.mostrarGrupo(grupoId)
-  }
   renderGrupos () {
+    console.log('renderGrupos')
     return Object.keys(this.props.grupos).map( (key, index) => {
-      return <div onClick={()=>{this.handleClickGrupo(key)}}  key={key}>Grupo {key}</div>
+      return <Link key={`/grupo/${key}`} to={`/grupo/${key}`}>Grupo {key}</Link>
     })
   }
   render() {
-    
-    return <div >
+    return <div className={style.ListaGrupos}>
         Lista de Grupos
         {this.renderGrupos()}
       </div>

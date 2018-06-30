@@ -1,30 +1,30 @@
 import React from "react"
 import { connect } from 'react-redux'
-import ListaAlumnos from './ListaAlumnos'
+import Grupo from './Grupo'
 import ListaGrupos from './ListaGrupos'
 import Header from  './Header'
 import SettingsCog from './SettingsCog'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCog , faChevronLeft, faHome  } from '@fortawesome/free-solid-svg-icons'
+import { Switch, Route } from 'react-router'
+import style from './App.css'
+import { ConnectedRouter } from 'connected-react-router'
 
 library.add(faCog,faChevronLeft, faHome)
 
 class App extends React.Component {
 
   render() {
-    let body = null
-    if ( this.props.settings.mostrarGrupo !== 0 ){
-      body = <ListaAlumnos grupoId={this.props.settings.mostrarGrupo} />
-    }else { 
-      body = <ListaGrupos />
-    }
-    return <React.Fragment>
-      <SettingsCog />
-      <Header />
-      {body}
-      
-      </React.Fragment>
-    
+    return <ConnectedRouter history={this.props.history}>
+        <React.Fragment>
+          <SettingsCog />
+          <Header />
+          <Switch>
+          <Route path="/grupo/:key" render={(routeProps) => <Grupo grupoId={routeProps.match.params.key} routeProp={routeProps} />}/>
+          <Route exact path="/" component={ListaGrupos} />
+          </Switch>
+        </React.Fragment>
+      </ConnectedRouter>
   }
 }
 

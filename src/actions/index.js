@@ -19,7 +19,16 @@ export const mostrarGrupo = (grupodId) => {
     }
   }
 }
+export const agregarAlumno = (grupodId, alumno) => {
+  return {
+    type: grupos.AGREGAR_ALUMNO,
+    payload: {
+      grupoId: grupodId,
+      alumno
+    }
+  }
 
+}
 export const agregarGrupo = (grupoId,alumnos,fechas) => {
   return {
     type: grupos.AGREGAR_GRUPO,
