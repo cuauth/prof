@@ -6,6 +6,16 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+  output: {
+    publicPath: "/"
+  },
+  devServer: {
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/grupo\/*/, to: '/' },
+      ]
+    },
+  },
   module: {
     rules: [
       {
