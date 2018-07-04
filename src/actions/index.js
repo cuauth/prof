@@ -7,27 +7,38 @@ export const grupos = {
   ELIMINAR_ALUMNO: 'ELIMINAR_ALUMNO',
   CAMBIAR_ALUMNO_ASISTENCIA: 'CAMBIAR_ALUMNO_ASISTENCIA',
   AGREGAR_GRUPO: 'AGREGAR_GRUPO',
-  MOSTRAR_GRUPO: 'MOSTRAR_GRUPO'
+  MOSTRAR_GRUPO: 'MOSTRAR_GRUPO',
+  AGREGAR_TAREA: 'AGREGAR_TAREA'
 
 }
 
-export const mostrarGrupo = (grupodId) => {
+export const mostrarGrupo = (grupoId) => {
   return {
     type: grupos.MOSTRAR_GRUPO,
     payload: {
-      id: grupodId
+      id: grupoId
     }
   }
 }
-export const agregarAlumno = (grupodId, alumno) => {
+export const agregarAlumno = (grupoId, alumno) => {
   return {
     type: grupos.AGREGAR_ALUMNO,
     payload: {
-      grupoId: grupodId,
+      grupoId: grupoId,
       alumno
     }
   }
 
+}
+
+export const agregarTarea = (grupoId,tarea) => {
+  return {
+    type: grupos.AGREGAR_TAREA,
+    payload: {
+      grupoId,
+      tarea
+    }
+  }
 }
 export const agregarGrupo = (grupoId,alumnos,fechas) => {
   return {

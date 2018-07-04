@@ -5,8 +5,9 @@ import listaAlumnos from './listaAlumnos'
 /*
 struct of grupos
   id: 0,
-  alumnos: [],
-  fechas: {} 
+  alumnos: {},
+  fechas: {} ,
+  tareas: {}
 */
 const gruposReducer = (state = {}, action) => {
   switch (action.type) {
@@ -31,6 +32,18 @@ const gruposReducer = (state = {}, action) => {
       let newArr = Object.assign({}, state);
       newArr[action.payload.grupoId].alumnos = listaAlumnos(state[action.payload.grupoId].alumnos,action)
 
+      return newArr
+    }
+    case 'AGREGAR_TAREA': {
+      let newArr = Object.assign({}, state);
+      newArr[action.payload.grupoId].tareas = {
+        [action.payload.tarea.id]: {
+          titulo: action.payload.tarea.titulo,
+          descripcion: action.payload.tarea.descripcion,
+          fechaDeEntrega: action.payload.tarea.fechaDeEntrega,
+          valor: action.payload.tarea.valor
+        }
+      }
       return newArr
     }
     default:
