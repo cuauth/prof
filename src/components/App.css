@@ -4,3 +4,10 @@ a {
 body {
   margin: 0;
 }
+
+label {
+  display: block;
+}
+input, textarea {
+  display: block;
+}

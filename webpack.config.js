@@ -24,25 +24,46 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
-      },
-      {
+      },{
         test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: "[name]_[local]_[hash:base64]",
-              sourceMap: true,
-              minimize: true
+        oneOf: [ {
+          resourceQuery: /external/, // foo.css?inline
+          use: [
+            {
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader",
+              options: {
+                modules: false,
+                importLoaders: 1,
+                localIdentName: "[name]_[local]_[hash:base64]",
+                sourceMap: true,
+                minimize: true
+              }
             }
-          }
-          ]
-      } 
+            ]
+        },{
+          use: [
+            {
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader",
+              options: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: "[name]_[local]_[hash:base64]",
+                sourceMap: true,
+                minimize: true
+              }
+            }
+            ]
+        }
+        
+      ]
+        
+      }
     ]
   },
   plugins: [htmlPlugin]

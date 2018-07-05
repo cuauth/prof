@@ -37,6 +37,7 @@ const gruposReducer = (state = {}, action) => {
     case 'AGREGAR_TAREA': {
       let newArr = Object.assign({}, state);
       newArr[action.payload.grupoId].tareas = {
+        ...newArr[action.payload.grupoId].tareas, 
         [action.payload.tarea.id]: {
           titulo: action.payload.tarea.titulo,
           descripcion: action.payload.tarea.descripcion,

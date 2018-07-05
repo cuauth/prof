@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import ListaAlumnos from './ListaAlumnos'
 import AgregarAlumnoForm from './AgregarAlumnoForm'
-import { agregarTarea} from './../actions'
+
 import moment from 'moment'
 class Grupo extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class Grupo extends React.Component {
   render() {
     const showForm = this.state.showForm
     return <React.Fragment>
-      <button onClick={()=>{ this.props.agregarTarea(this.props.grupoId, { id:1, titulo: 'titulo', descripcion: 'descripcion de la tarea', fechaDeEntrega: moment().add('5','days'), valor: 100  }) }} >Ver tareas</button>
+      <button onClick={()=> {this.props.routeProp.history.push(`/grupo/${this.props.grupoId}/tareas`)}} >Ver tareas</button>
       <ListaAlumnos grupoId={this.props.grupoId} />
       <div>
         {(showForm)
@@ -47,7 +47,7 @@ const mapStateToProps = (state,props) => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    agregarTarea: (grupoId, tarea) =>{dispatch(agregarTarea(grupoId, tarea))}
+
   }
 }
 
