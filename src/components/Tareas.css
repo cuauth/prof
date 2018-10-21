@@ -1,0 +1,22 @@
+.headerTarea{
+  background-color: whitesmoke;
+  border-bottom: 1px solid black;
+  
+
+}
+
+.boxTarea {
+  padding: 5px;
+  margin: 5px;
+  background-color: rebeccapurple;
+  display: inline-block;
+  min-width: 200px;
+}
+
+.containerTarea{
+
+}
+
+.footerTarea{
+  text-align: right;
+}

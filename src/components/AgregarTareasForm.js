@@ -28,17 +28,28 @@ class AgregarTareasForm extends React.Component {
       valor: this.state.valor
     }
     this.props.onSubmit(form)
+    this.setState((state)=>{
+      return {
+        titulo: '',
+        descripcion: '',
+        fechaDeEntrega: moment(),
+        valor: 0
+      }
+    })
     
   }
   handleChange(event){
-      this.setState({[event.target.name]: event.target.value});
+
+    const newValue = (event.target.validity.valid) ? event.target.value: this.state[event.target.name] 
+    
+    this.setState({[event.target.name]: newValue});
   }
   handleDateChange(date){
     this.setState({ fechaDeEntrega: date});
   }
   render() {
 
-    //this.props.agregarTarea(this.props.grupoId, { id:1, titulo: 'titulo', descripcion: 'descripcion de la tarea', fechaDeEntrega: moment().add('5','days'), valor: 100  }) 
+    //
     return <div className={style.TareasContainer}>
       <form  onSubmit={this.onSubmit}>
         <label>Titulo:
@@ -52,7 +63,7 @@ class AgregarTareasForm extends React.Component {
         />
         </label>
         <label>Valor:
-        <input type='text' name='valor' value={this.state.valor} onChange={this.handleChange} /></label>
+        <input type='text' name='valor' pattern="[0-9]*" value={this.state.valor} onChange={this.handleChange} /></label>
         <label>Descripcion:
         <textarea name='descripcion' value={this.state.descripcion} onChange={this.handleChange} /></label>
         <button type="submit" value="Submit" >Agregar</button>

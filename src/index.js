@@ -4,7 +4,7 @@ import App from './components/App'
 import moment from 'moment'
 import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
-import { agregarGrupo } from './actions/index'
+import { agregarGrupo, agregarTarea } from './actions/index'
 import reducer from './reducer'
 
 import { Router, Route } from 'react-router'
@@ -61,6 +61,8 @@ const store = createStore(
 )
 store.dispatch(agregarGrupo(1, alumnos, {inicio:  inicio,fin: moment(inicio).add(15, 'days') }))
 store.dispatch(agregarGrupo(2, alumnos2, {inicio:  inicio,fin: moment(inicio).add(15, 'days') }))
+store.dispatch(agregarTarea(1, { id:1, titulo: 'titulo', descripcion: 'descripcion de la tarea', fechaDeEntrega: moment().add('5','days'), valor: 100  }))
+store.dispatch(agregarTarea(1, { id:2, titulo: 'titulo2', descripcion: 'descripcion de la tarea2', fechaDeEntrega: moment().add('1','days'), valor: 100  }))
 const Index = () => {
   return <Provider store={store}>
         <App history={history} />
