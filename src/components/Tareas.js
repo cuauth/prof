@@ -35,7 +35,7 @@ class Tareas extends React.Component {
       </div>
       </div>
     })
-    return <div class={style.containerTarea}>{list}</div>
+    return <div className={style.containerTarea}>{list}</div>
   }
   render() {
 

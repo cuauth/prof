@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Grupo from './Grupo'
 import Tareas from './Tareas'
 import ListaGrupos from './ListaGrupos'
+import RevisarTareas from './RevisarTareas'
 import Header from  './Header'
 import SettingsCog from './SettingsCog'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -14,6 +15,22 @@ import 'react-datepicker/dist/react-datepicker.css?external'
 library.add(faCog,faChevronLeft, faHome)
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.routeToTareas = this.routeToTareas.bind(this)
+    this.routeToRevisarTareas = this.routeToRevisarTareas.bind(this)
+    this.routeToGrupo = this.routeToGrupo.bind(this)
+  }
+  routeToTareas(routeProps) {
+    return <Tareas grupoId={routeProps.match.params.key} routeProp={routeProps} />
+  }
+
+  routeToRevisarTareas(routeProps) {
+    return <RevisarTareas grupoId={routeProps.match.params.key} routeProp={routeProps} />
+  }
+  routeToGrupo(routeProps){
+    return <Grupo grupoId={routeProps.match.params.key} routeProp={routeProps} />
+  }
 
   render() {
     return <ConnectedRouter history={this.props.history}>
@@ -21,8 +38,9 @@ class App extends React.Component {
           <SettingsCog />
           <Header />
           <Switch>
-          <Route path="/grupo/:key/tareas" render={(routeProps) => <Tareas grupoId={routeProps.match.params.key} routeProp={routeProps} />}/>
-          <Route path="/grupo/:key" render={(routeProps) => <Grupo grupoId={routeProps.match.params.key} routeProp={routeProps} />}/>
+          <Route path="/grupo/:key/tareas" render={this.routeToTareas}/>
+          <Route path="/grupo/:key/revisarTareas" render={this.routeToRevisarTareas}/>
+          <Route path="/grupo/:key" render={this.routeToGrupo }/>
           <Route exact path="/" component={ListaGrupos} />
           </Switch>
         </React.Fragment>

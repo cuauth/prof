@@ -1,6 +1,6 @@
 import listaFechas from './listaFechas'
 import listaAlumnos from './listaAlumnos'
-
+import {grupos} from '../actions/index'
 
 /*
 struct of grupos
@@ -11,6 +11,11 @@ struct of grupos
 */
 const gruposReducer = (state = {}, action) => {
   switch (action.type) {
+    case grupos.GUARDAR_TAREA_ALUMNO: {
+      let newState = Object.assign({}, state);
+      newState[action.payload.grupoId].alumnos = listaAlumnos(newState[action.payload.grupoId].alumnos,action)
+      return newState
+    }
     case 'AGREGAR_ALUMNO': {
       return {
         ...state,
@@ -39,6 +44,7 @@ const gruposReducer = (state = {}, action) => {
       newArr[action.payload.grupoId].tareas = {
         ...newArr[action.payload.grupoId].tareas, 
         [action.payload.tarea.id]: {
+          id: action.payload.tarea.id,
           titulo: action.payload.tarea.titulo,
           descripcion: action.payload.tarea.descripcion,
           fechaDeEntrega: action.payload.tarea.fechaDeEntrega,

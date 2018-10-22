@@ -8,10 +8,21 @@ export const grupos = {
   CAMBIAR_ALUMNO_ASISTENCIA: 'CAMBIAR_ALUMNO_ASISTENCIA',
   AGREGAR_GRUPO: 'AGREGAR_GRUPO',
   MOSTRAR_GRUPO: 'MOSTRAR_GRUPO',
-  AGREGAR_TAREA: 'AGREGAR_TAREA'
+  AGREGAR_TAREA: 'AGREGAR_TAREA',
+  GUARDAR_TAREA_ALUMNO: 'GUARDAR_TAREA_ALUMNO'
 
 }
-
+export const guardarTareaAlumno = function(grupoId, alumnoId, tarea) {
+  console.log("dispatch?")
+  return {
+    type: grupos.GUARDAR_TAREA_ALUMNO,
+    payload: {
+      grupoId: grupoId,
+      alumnoId: alumnoId,
+      tarea: tarea
+    }
+  }
+}
 export const mostrarGrupo = (grupoId) => {
   return {
     type: grupos.MOSTRAR_GRUPO,

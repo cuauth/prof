@@ -23,7 +23,6 @@ class AgregarAlumnoForm extends React.Component {
     this.setState({nombre: event.target.value});
   }
   render() {
-    console.log()
     return <form onSubmit={this.handleSubmit}>
         <input type="text" value={this.state.nombre} onChange={this.handleChange} />
         <button type="submit" value="Submit" >Agregar</button>

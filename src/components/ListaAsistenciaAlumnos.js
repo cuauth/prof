@@ -2,11 +2,12 @@ import { connect } from 'react-redux'
 import React from "react";
 import style from './ListaAlumnos.css'
 import FilaAlumno from './FilaAlumno'
+import AsistenciasRow from './AsistenciasRow'
 import moment from 'moment';
 import 'moment/locale/es'  // without this line it didn't work
 moment.locale('es')
 
-class ListaAlumnos extends React.Component {
+class ListaAsistenciaAlumnos extends React.Component {
   constructor(props){
     super(props)
     this.numeroDeDias = 0 ;
@@ -59,10 +60,11 @@ class ListaAlumnos extends React.Component {
   render( ){
     const header = this.renderHeader(); // esta linea tiene que estar aqui, numero de dias 
     const paddingAlumnos = this.props.alumnos.length
-    const _numeroDeDias = this.numeroDeDias
     const filaAlumno = Object.keys(this.props.alumnos.data).map((key, index) => {
+      const showComponent = <AsistenciasRow  numeroDeDias={this.numeroDeDias} alumno={this.props.alumnos.data[key]} grupoId={this.props.grupoId}
+      countPadding={paddingAlumnos} index={index} />
       
-      return <FilaAlumno grupoId={this.props.grupoId} index={index} countPadding={paddingAlumnos} numeroDeDias={_numeroDeDias} alumno={this.props.alumnos.data[key] } key={key}  />
+      return <FilaAlumno grupoId={this.props.grupoId} alumno={this.props.alumnos.data[key] } key={key} showComponent={showComponent}  />
     })
     return <table className={style.listaAlumnosGrid}>
       {header}
@@ -88,4 +90,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListaAlumnos)
+)(ListaAsistenciaAlumnos)
