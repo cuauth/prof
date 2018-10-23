@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
 import { mostrarGrupo } from '../actions'
 import { Link } from 'react-router-dom'
-import style from './Header.css'
 
-class Header extends React.Component<any> {
+import style from './Header.css'
+class Header extends React.Component {
   constructor(props) {
     super(props)
     this.clickHomeHandler = this.clickHomeHandler.bind(this)
@@ -16,7 +16,7 @@ class Header extends React.Component<any> {
   render() {
     return <div className={style.headerContainer}>
         <Link to={'/'}>
-          <span onClick={this.clickHomeHandler}><FaIcon  icon="home" className={style.homeIcon} /></span>
+          <FaIcon onClick={this.clickHomeHandler} icon="home" className={style.homeIcon} />
         </Link>
         <span  className={style.headerName}>
           Ernesto Osuna Garzon

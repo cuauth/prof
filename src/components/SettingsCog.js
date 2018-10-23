@@ -3,10 +3,8 @@ import { connect } from 'react-redux'
 import style from './SettingsCog.css'
 
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
-const initialState = { showList : false}
-type State = Readonly<typeof initialState>
-class SettingsCog extends React.Component<any, State> {
-  readonly state:State = initialState
+
+class SettingsCog extends React.Component {
   constructor(props) {
     super(props)
     this.showSettings = this.showSettings.bind(this)
@@ -33,7 +31,7 @@ class SettingsCog extends React.Component<any, State> {
   render() {
     const strIconClicked =  (this.state.showList) ? style.clicked : ''
     return <div className={style.SettingsCog}>
-        <span onClick={this.showSettings}><FaIcon  className={style.settingsIcon + ' ' +strIconClicked} icon="cog" /></span>
+        <FaIcon onClick={this.showSettings} className={style.settingsIcon + ' ' +strIconClicked} icon="cog" />
         {this.renderSettingsList()}
       </div>
     

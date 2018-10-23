@@ -2,7 +2,7 @@ import React from "react";
 
 import style from './FilaAlumno.css'
 
-export default class FilaAlumno extends React.Component<any> {
+export default class FilaAlumno extends React.Component {
   constructor(props){
     super(props)
   }

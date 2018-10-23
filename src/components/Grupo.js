@@ -4,7 +4,7 @@ import ListaAsistenciaAlumnos from './ListaAsistenciaAlumnos'
 import AgregarAlumnoForm from './AgregarAlumnoForm'
 
 import moment from 'moment'
-class Grupo extends React.Component<any, {showForm: boolean}> {
+class Grupo extends React.Component {
   constructor(props) {
     super(props)
     this.agregarAlumnoHandleClick = this.agregarAlumnoHandleClick.bind(this)
