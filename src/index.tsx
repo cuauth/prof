@@ -6,11 +6,15 @@ import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { agregarGrupo, agregarTarea } from './actions/index'
 import reducer from './reducer'
-
-import { Router, Route } from 'react-router'
 import createHistory from "history/createBrowserHistory"
 import { connectRouter, routerMiddleware } from 'connected-react-router'
+import './types/grupos'
 import 'moment/locale/es'  // without this line it didn't work
+let alumnoTarea  : TareaAlumno = {
+  id: "someId",
+  valor: 20,
+  fechaEntregada: new Date()
+}
 moment.locale('es')
 const inicio = moment()
 const alumnos = [
@@ -48,8 +52,8 @@ const alumnos2 = [
   }
 ]
 const history =createHistory()
-
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const windowIfDefined = typeof window === 'undefined' ? null : window as any;
+const composeEnhancer = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
   connectRouter(history)(reducer),
@@ -69,4 +73,4 @@ const Index = () => {
     </Provider>
 };
 
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render(<Index />, document.getElementById("index")); 

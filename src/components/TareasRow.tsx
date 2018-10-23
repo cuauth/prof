@@ -1,7 +1,7 @@
 import TareasInput from './TareasInput'
 import React from "react";
 
-class TareasRow extends React.Component {
+class TareasRow extends React.Component<any> {
   constructor(props){
     super(props)
     this.renderTarea = this.renderTarea.bind(this)

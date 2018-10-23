@@ -9,7 +9,7 @@ const initialAlumno = {
   id: 0,
   nombre:'',
   asistencias: [],
-  tareas: {}
+  tareas: {} 
   
 }
 const alumnos = (state= initialState, action) => {
@@ -18,11 +18,9 @@ const alumnos = (state= initialState, action) => {
       console.log('old state', state)
       let newState = Object.assign({}, state);
       
-      if(newState.tareas == undefined) newState.tareas = {}
-      let newTarea = Object.assign({},newState.tareas[action.payload.tarea.id])
-      console.log('newtarea ',newTarea)
-      newState.tareas[action.payload.tarea.id] = tareas(newTarea, action)
-      console.log('nuevoAlumno', newState)
+      if(newState['tareas'] == undefined) newState['tareas'] = {}
+      let newTarea :TareaAlumno = Object.assign({},newState['tareas'][action.payload.tarea.id])
+      newState['tareas'][action.payload.tarea.id] = tareas(newTarea, action)
       return newState
     }
     case grupos.AGREGAR_ALUMNO: {
@@ -32,13 +30,12 @@ const alumnos = (state= initialState, action) => {
         asistencias: [],
         tareas: {}
       }
-      console.log('nuevo alumnos?')
       return newAlumno
     }
     case grupos.CAMBIAR_ALUMNO_ASISTENCIA: {
 
       let newArr = Object.assign({}, state);
-      newArr.asistencias[action.payload.indiceDia] = action.payload.nuevoValor
+      newArr['asistencias'][action.payload.indiceDia] = action.payload.nuevoValor
       return newArr
     }
     default: 
@@ -59,7 +56,7 @@ const listaAlumnos = (state = initialState, action) => {
       const newState = {
         ...state,
         alumnos: {
-          ...state.alumnos,
+          ...state['alumnos'],
           [action.payload.alumno.id]: alumnos(undefined,action)
         }
       }
@@ -69,7 +66,7 @@ const listaAlumnos = (state = initialState, action) => {
       let newArr = Object.assign({}, state)
       action.payload.alumnos.map( function(item, index)  {
         const nuevoAlumno = alumnos(item,action)
-        newArr[nuevoAlumno.id] = nuevoAlumno
+        newArr[nuevoAlumno['id']] = nuevoAlumno
       })
       return newArr
     case grupos.CAMBIAR_ALUMNO_ASISTENCIA: {

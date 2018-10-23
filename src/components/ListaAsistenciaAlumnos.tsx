@@ -7,7 +7,8 @@ import moment from 'moment';
 import 'moment/locale/es'  // without this line it didn't work
 moment.locale('es')
 
-class ListaAsistenciaAlumnos extends React.Component {
+class ListaAsistenciaAlumnos extends React.Component<any> {
+  numeroDeDias: number
   constructor(props){
     super(props)
     this.numeroDeDias = 0 ;
@@ -18,9 +19,9 @@ class ListaAsistenciaAlumnos extends React.Component {
     if(!this.props.listaFechas) return null;
     let diaEnUso =  moment(this.props.listaFechas.inicio)
     let nuevaSemana = true
-    let semanas = [];
+    let semanas = Array<any>();
     let semanaCount = 0 
-    let dias = [];
+    let dias = Array<any>();
     let diaCount = 0
     this.numeroDeDias = 0
     
@@ -45,7 +46,7 @@ class ListaAsistenciaAlumnos extends React.Component {
     return (
       <thead>
         <tr  >
-          <th rowSpan='2' className={style.headerNombreAlumno}>
+          <th rowSpan={2} className={style.headerNombreAlumno}>
               Nombre de alumno
           </th>
           {semanas}

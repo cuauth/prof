@@ -2,12 +2,12 @@ import React from "react";
 import style from './FilaAlumno.css'
 import AsistenciaInput from './AsistenciaInput'
 
-export default class AsistenciasRow extends React.Component {
+export default class AsistenciasRow extends React.Component<any> {
   constructor(props){
     super(props)
   }
   render(){
-    let dias =[];
+    let dias =Array<any>();
     let countAsistio = 0
     for(let i = 0; i<this.props.numeroDeDias ;i++){
       let asistio = false;

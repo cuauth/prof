@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
-class AsistenciaInput extends React.Component {
+class AsistenciaInput extends React.Component<any> {
   constructor(props){
     super(props)
     this.onChange = this.onChange.bind(this)

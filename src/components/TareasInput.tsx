@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 import {guardarTareaAlumno} from '../actions/index'
 import React from "react";
-
-class TareasInput extends React.Component {
+const initialState = {valorTarea: 0}
+type State = Readonly<typeof initialState>
+class TareasInput extends React.Component<any, State> {
+  readonly state:State  = initialState
   constructor(props) {
     super(props)
     this.onChangeHandler = this.onChangeHandler.bind(this)
     this.onKeyPressHandler = this.onKeyPressHandler.bind(this)
-    this.state = {
-      valorTarea: 0
-    }
   }
   onChangeHandler(event) {
     this.setState({valorTarea: event.target.value});

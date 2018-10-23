@@ -5,11 +5,12 @@ import moment from 'moment';
 import TareasRow from './TareasRow'
 import 'moment/locale/es'
 moment.locale('es')
-
-class ListaTareaAlumnos extends React.Component {
+const initialState = {numeroDeDias: 0}
+type State = Readonly<typeof initialState>
+class ListaTareaAlumnos extends React.Component<any, State> {
+  readonly state:State = initialState
   constructor(props){
     super(props)
-    this.numeroDeDias = 0 ;
     this.renderHeader = this.renderHeader.bind(this)
   }
 
