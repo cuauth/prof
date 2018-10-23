@@ -14,7 +14,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import 'react-datepicker/dist/react-datepicker.css?external'
 library.add(faCog,faChevronLeft, faHome)
 
-class App extends React.Component {
+class App extends React.Component<any> {
   constructor(props){
     super(props)
     this.routeToTareas = this.routeToTareas.bind(this)
@@ -33,6 +33,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return <ConnectedRouter history={this.props.history}>
         <React.Fragment>
           <SettingsCog />

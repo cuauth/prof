@@ -13,7 +13,6 @@ export const grupos = {
 
 }
 export const guardarTareaAlumno = function(grupoId, alumnoId, tarea) {
-  console.log("dispatch?")
   return {
     type: grupos.GUARDAR_TAREA_ALUMNO,
     payload: {

@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import UUID from 'uuid-js'
 import {agregarAlumno} from './../actions'
-class AgregarAlumnoForm extends React.Component {
+class AgregarAlumnoForm extends React.Component<any,{nombre: string}> {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this);

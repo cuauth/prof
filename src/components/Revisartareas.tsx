@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux'
 import { mostrarGrupo } from '../actions'
 import ListaTareasAlumnos from './ListaTareasAlumnos'
-class RevisarTareas extends React.Component {
+class RevisarTareas extends React.Component<any> {
   constructor(props) {
     super(props)
   }

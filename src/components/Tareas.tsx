@@ -5,7 +5,7 @@ import UUID from 'uuid-js'
 import AgregarTareasForm from './AgregarTareasForm'
 import { agregarTarea} from './../actions'
 import style from './Tareas.css'
-class Tareas extends React.Component {
+class Tareas extends React.Component<any> {
   constructor(props) {
     super(props)
     this.agregarTarea = this.agregarTarea.bind(this)

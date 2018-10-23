@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { mostrarGrupo } from '../actions'
 import { Link } from 'react-router-dom'
 import style from './ListaGrupos.css'
-class ListaGrupos extends React.Component {
+class ListaGrupos extends React.Component<any> {
   constructor(props) {
     super(props)
     this.renderGrupos = this.renderGrupos.bind(this)
