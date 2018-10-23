@@ -1,13 +1,12 @@
 import {grupos} from '../../actions'
-const defaultState: TareaAlumno = {
-    id: '0',
+const defaultState = {
+    id: 0,
     valor: 0,
-    fechaEntregada: undefined,
-    fechaUltimaActualizacion: undefined
+    fechaEntregada: null,
+    fechaUltimaActualizacion: null
 }
-
 //tareas en alumno
-const tareas = function(state:TareaAlumno = defaultState, action){
+const tareas = function(state = defaultState, action){
   switch (action.type) {
     case grupos.GUARDAR_TAREA_ALUMNO:
       return Object.assign({},state,action.payload.tarea)
